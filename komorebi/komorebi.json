@@ -6,26 +6,19 @@
   "default_workspace_padding": 6,
   "default_container_padding": 1,
 
-  "theme": {
-    "palette": "Base16",
-    "name": "Kanagawa",
-    "unfocused_border": "Base03"
-  },
-
   "border": true,
   "border_implementation": "Komorebi",
-  "border_style": "System",
-  "border_width": 6,
+  "border_style": "Square",
+  "border_width": 4,
   "border_offset": -1,
 
-  "layout_defaults": {
-    "Scrolling": {
-      "layout_options": {
-        "scrolling": {
-          "columns": 2
-        }
-      }
-    }
+  "border_colours": {
+    "single": "#60CDFF",
+    "stack": "#60CDFF",
+    "monocle": "#60CDFF",
+    "floating": "#60CDFF",
+    "unfocused": "#4A4A4A",
+    "unfocused_locked": "#4A4A4A"
   },
 
   "monitors": [
@@ -33,19 +26,39 @@
       "workspaces": [
         {
           "name": "1",
-          "layout": "Scrolling"
+          "layout": "Scrolling",
+          "layout_options": {
+            "scrolling": {
+              "columns": 2
+            }
+          }
         },
         {
           "name": "2",
-          "layout": "Scrolling"
+          "layout": "Scrolling",
+          "layout_options": {
+            "scrolling": {
+              "columns": 2
+            }
+          }
         },
         {
           "name": "3",
-          "layout": "Scrolling"
+          "layout": "Scrolling",
+          "layout_options": {
+            "scrolling": {
+              "columns": 2
+            }
+          }
         },
         {
           "name": "4",
-          "layout": "Scrolling"
+          "layout": "Scrolling",
+          "layout_options": {
+            "scrolling": {
+              "columns": 2
+            }
+          }
         }
       ]
     }
