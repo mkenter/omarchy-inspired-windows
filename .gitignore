@@ -1,0 +1,23 @@
+# Ignore everything by default and allow only the files published by this repo.
+*
+
+!.gitignore
+!README.md
+!LICENSE
+!LICENSES/
+!LICENSES/Win11-Fluent-Onyx-MIT.txt
+
+!komorebi/
+!komorebi/hotkeys.ahk
+!komorebi/komorebi.json
+
+!yasb/
+!yasb/audio.css
+!yasb/base.css
+!yasb/clock.css
+!yasb/komorebi.css
+!yasb/media.css
+!yasb/system-widgets.css
+!yasb/taskbar.css
+!yasb/config.yaml
+!yasb/styles.css

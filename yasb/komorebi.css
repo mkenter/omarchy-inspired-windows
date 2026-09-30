@@ -1,0 +1,71 @@
+.komorebi-active-layout .widget-container {
+  background-color: var(--color-subtle-fill-rest);
+  border: 1px solid var(--color-stroke-control-default);
+}
+
+.komorebi-active-layout .label {
+  font-family: var(--font-icon-2);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+.komorebi-layout-menu {
+  padding: var(--space-16);
+  border: 1px solid var(--color-stroke-surface);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-background-elevated);
+}
+
+.komorebi-layout-menu .menu-item {
+  padding: var(--space-8) var(--space-16);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-regular);
+  margin: var(--space-2);
+  border-radius: var(--radius-small);
+}
+.komorebi-layout-menu .menu-item-icon {
+  color: var(--color-text-secondary);
+  font-family: var(--font-icon-2);
+  font-size: 16px;
+}
+.komorebi-layout-menu .menu-item-text {
+  font-family: var(--font-text);
+  padding-left: var(--space-4);
+  font-size: var(--font-size-body);
+}
+
+.komorebi-layout-menu .menu-item:hover {
+  background-color: var(--color-subtle-fill-hover);
+  border-radius: var(--radius-small);
+  margin: var(--space-4);
+}
+
+.komorebi-layout-menu .separator {
+  max-height: 1px;
+  background-color: var(--color-stroke-divider);
+}
+
+.komorebi-workspaces .ws-btn {
+  font-family: var(--font-icon-2);
+  color: var(--color-text-tertiary);
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  line-height: 16px;
+  padding: 0 var(--space-4);
+  margin: 0;
+  min-width: 0;
+}
+
+.komorebi-workspaces .ws-btn:hover {
+  color: var(--color-text-secondary);
+}
+
+.komorebi-workspaces .ws-btn.active {
+  color: var(--color-accent-default);
+}
+
+.komorebi-workspaces .ws-btn.populated {
+  color: var(--color-text-secondary);
+}

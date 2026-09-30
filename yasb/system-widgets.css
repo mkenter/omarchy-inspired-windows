@@ -1,0 +1,100 @@
+.home-widget .widget-container {
+  background-color: transparent;
+  border: 0;
+}
+
+.home-widget .icon {
+  font-family: var(--font-icon-2);
+  font-size: 18px;
+  color: var(--color-text-secondary);
+}
+
+.home-widget .icon:hover {
+  color: var(--color-accent-default);
+}
+
+.home-menu {
+  background-color: var(--color-background-elevated);
+  border: 1px solid var(--color-stroke-surface);
+  border-radius: var(--radius-medium);
+  padding: var(--space-8) 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+.home-menu .menu-item {
+  background-color: transparent;
+  padding: var(--space-8) var(--space-12);
+  margin: var(--space-2) var(--space-8);
+  border-radius: var(--radius-small);
+  font-family: var(--font-icon-2);
+  border: 0;
+  min-width: 150px;
+}
+
+.home-menu .menu-item:hover {
+  background-color: var(--color-subtle-fill-hover);
+  color: var(--color-text-primary);
+}
+
+.home-menu .separator {
+  height: 1px;
+  min-height: 1px;
+  max-height: 1px;
+  background-color: var(--color-stroke-divider);
+  margin: var(--space-4) var(--space-8);
+}
+
+
+.apps-widget .widget-container {
+  padding: 0 4px;
+}
+
+.apps-widget .label {
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+}
+
+.apps-widget .label:hover {
+  color: var(--color-accent-default);
+}
+
+.systray {
+  background: transparent;
+}
+
+.systray .pinned-container.drop-target {
+  background-color: var(--color-subtle-fill-hover);
+}
+
+.systray .unpinned-visibility-btn {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-small);
+  height: 20px;
+  width: 16px;
+  border: none;
+  outline: none;
+}
+
+.systray .unpinned-visibility-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.systray-popup {
+  padding: var(--space-8);
+  border: 1px solid var(--color-stroke-surface);
+  border-radius: var(--radius-medium);
+  background-color: var(--color-background-elevated);
+}
+.systray-popup .button {
+  padding: var(--space-8);
+  margin: var(--space-4);
+  border: 0;
+  border-radius: var(--radius-small);
+}
+.systray-popup .button:hover {
+  background-color: var(--color-subtle-fill-hover);
+}

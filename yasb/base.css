@@ -1,0 +1,213 @@
+:root {
+
+  --font-primary: "Segoe UI Variable Display", "Segoe UI";
+  --font-text: "Segoe UI Variable Text", "Segoe UI", system-ui;
+  --font-mono: "JetBrainsMono Nerd Font";
+  --font-icon: "Segoe Fluent Icons", "JetBrainsMono NFP";
+  --font-icon-2: "JetBrainsMono NFP";
+
+  --font-size-caption: 12px;
+  --font-size-body: 14px;
+  --font-size-body-strong: 18px;
+  --font-size-subtitle: 20px;
+
+  --font-weight-regular: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+
+  --color-background-base: rgba(8, 8, 8, 0.6);
+  --color-background-elevated: rgba(44, 44, 44, 0.4);
+  --color-background-elevated-x2: rgba(44, 44, 44, 0.8);
+  --color-taskbar: rgba(43, 44, 45, 0.85);
+
+  --color-surface-secondary: rgba(255, 255, 255, 0.0419);
+  --color-surface-tertiary: rgba(255, 255, 255, 0.0326);
+  --color-surface-disabled: rgba(255, 255, 255, 0.0419);
+
+  --color-text-primary: rgba(255, 255, 255, 1);
+  --color-text-secondary: rgba(255, 255, 255, 0.786);
+  --color-text-tertiary: rgba(255, 255, 255, 0.544);
+  --color-text-disabled: rgba(255, 255, 255, 0.362);
+
+  --color-accent-default: #60cdff;
+  --color-accent-secondary: #0078d4;
+
+  --color-subtle-fill-rest: rgba(255, 255, 255, 0.0605);
+  --color-subtle-fill-hover: rgba(255, 255, 255, 0.0837);
+  --color-subtle-fill-pressed: rgba(255, 255, 255, 0.0512);
+
+  --color-stroke-surface: rgba(255, 255, 255, 0.0698);
+  --color-stroke-control-default: rgba(255, 255, 255, 0.0838);
+  --color-stroke-divider: rgba(255, 255, 255, 0.0838);
+  --color-stroke-focus: rgba(255, 255, 255, 0.1047);
+
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 12px;
+}
+
+* {
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-regular);
+  font-family: var(--font-primary);
+  margin: 0;
+  padding: 0;
+}
+
+.yasb-bar {
+  padding: 0 var(--space-4);
+  margin: 0;
+  background-color: var(--color-background-base);
+  border-bottom: 1px solid var(--color-stroke-control-default);
+}
+
+.widget {
+  padding: 0 var(--space-4);
+  margin: 0;
+}
+
+.widget .label {
+  padding: 0 var(--space-4);
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+}
+
+.widget .label.alt {
+  padding: 0 var(--space-8);
+}
+
+.widget .label:hover {
+  color: var(--color-text-primary);
+}
+
+.widget .icon {
+  padding-top: 1px;
+}
+
+.tooltip {
+  background-color: var(--color-background-elevated-x2);
+  border: 1px solid var(--color-stroke-surface);
+  border-radius: var(--radius-medium);
+  padding: var(--space-8) var(--space-12);
+  margin-top: var(--space-12);
+  font-size: var(--font-size-body);
+  font-family: var(--font-primary);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-regular);
+}
+
+.context-menu,
+.context-menu .menu-checkbox {
+  background-color: var(--color-background-elevated);
+  border: 1px solid var(--color-stroke-surface);
+  border-radius: var(--radius-medium);
+  padding: var(--space-8) 0;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-body);
+  color: var(--color-text-primary);
+}
+
+.context-menu::right-arrow {
+  width: 8px;
+  height: 8px;
+  padding-right: var(--space-24);
+}
+
+.context-menu::item,
+.context-menu .menu-checkbox {
+  background-color: transparent;
+  padding: var(--space-8) var(--space-12);
+  margin: var(--space-2) var(--space-8);
+  border-radius: var(--radius-small);
+  border: 0;
+  min-width: 150px;
+}
+
+.context-menu::item:selected,
+.context-menu .menu-checkbox:hover {
+  background-color: var(--color-subtle-fill-hover);
+  color: var(--color-text-primary);
+}
+
+.context-menu::separator {
+  height: 1px;
+  background-color: var(--color-stroke-divider);
+  margin: var(--space-4) var(--space-8);
+}
+
+.context-menu::item:disabled {
+  color: var(--color-text-disabled);
+  background-color: transparent;
+}
+
+.context-menu .menu-checkbox .checkbox {
+  border: none;
+  padding: var(--space-8) var(--space-16);
+  font-size: var(--font-size-body);
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+}
+
+.context-menu .submenu::item:disabled {
+  margin: 0;
+  padding-left: var(--space-16);
+}
+
+.context-menu .menu-checkbox .checkbox:unchecked {
+  color: var(--color-text-tertiary);
+}
+
+.context-menu .menu-checkbox .checkbox::indicator {
+  width: 12px;
+  height: 12px;
+  margin-left: 0;
+  margin-right: var(--space-8);
+}
+
+.context-menu .menu-checkbox .checkbox::indicator:unchecked {
+  background-color: var(--color-surface-secondary);
+  border-radius: var(--radius-small);
+}
+
+.context-menu .menu-checkbox .checkbox::indicator:checked {
+  background-color: var(--color-accent-secondary);
+  border-radius: var(--radius-small);
+}
+
+.context-menu .menu-checkbox .checkbox:focus {
+  outline: none;
+}
+
+.widget-container {
+  padding: var(--space-4) var(--space-12);
+  margin: var(--space-4) 0;
+  background-color: var(--color-subtle-fill-rest);
+  border-radius: var(--radius-large);
+  border: 1px solid var(--color-stroke-control-default);
+}
+
+.widget-container:hover {
+  background-color: rgba(60, 60, 60, 0.7);
+  border-color: var(--color-stroke-focus);
+}
+
+.widget .icon {
+  font-family: var(--font-icon);
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin-right: var(--space-4);
+}
+
+.widget:hover .icon {
+  color: var(--color-text-primary);
+}
