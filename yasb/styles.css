@@ -1,7 +1,314 @@
-@import "base.css";
-@import "system-widgets.css";
-@import "taskbar.css";
-@import "media.css";
-@import "clock.css";
-@import "audio.css";
-@import "komorebi.css";
+/* Original YASB styling. Omarchy visual measurements are recorded in yasb/DESIGN.md. */
+* {
+    font-family: "Consolas";
+    font-size: 12px;
+    color: #e2e0d8;
+}
+.fresh-bar { background-color: #191b1c; }
+.widget { padding: 0 8px; }
+.raycast-button .icon,
+.volume-widget .icon,
+.bluetooth-widget .icon,
+.wifi-widget .icon { font-family: "Segoe Fluent Icons"; }
+.komorebi-workspaces .ws-btn {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    min-width: 20px;
+    max-width: 20px;
+}
+.komorebi-workspaces .ws-btn.empty { color: #7d7e7a; }
+.komorebi-workspaces .ws-btn.populated { color: #e2e0d8; }
+.komorebi-workspaces .ws-btn.active { color: #e2e0d8; }
+/* Hover descriptions share the bar palette and square outline. */
+QToolTip,
+.tooltip,
+.dark.tooltip {
+    background-color: rgba(25, 27, 28, 0.97);
+    color: #e2e0d8;
+    border: 1px solid #e2e0d8;
+    border-radius: 0;
+    padding: 6px 10px;
+    font-size: 11px;
+}
+.systray { padding: 0 2px; }
+.systray .button,
+.systray .button:hover,
+.systray .button:pressed,
+.systray .unpinned-visibility-btn,
+.systray .unpinned-visibility-btn:hover,
+.systray .unpinned-visibility-btn:pressed,
+.systray .unpinned-visibility-btn:checked {
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    outline: none;
+}
+.systray .button { padding: 2px; margin: 0 2px; }
+.systray .unpinned-visibility-btn {
+    padding: 0;
+    margin: 0;
+    min-width: 12px;
+    max-width: 12px;
+    min-height: 26px;
+    max-height: 26px;
+}
+/* Fits YASB's date column beside its fixed calendar grid. */
+.clock-popup.calendar {
+    background-color: #191b1c;
+    border: 2px solid #7d7e7a;
+    border-radius: 0;
+    padding: 12px;
+}
+.clock-popup.calendar QCalendarWidget {
+    background-color: transparent;
+    min-width: 280px;
+    min-height: 200px;
+}
+.clock-popup.calendar .calendar-table {
+    background-color: transparent;
+    color: #e2e0d8;
+    font-size: 13px;
+    border: none;
+    outline: none;
+}
+.clock-popup.calendar .calendar-table::item {
+    background-color: transparent;
+    color: #e2e0d8;
+    border: 1px solid transparent;
+    padding: 5px 7px;
+}
+.clock-popup.calendar .calendar-table::item:selected {
+    background-color: transparent;
+    color: #e2e0d8;
+    border: 1px solid #e2e0d8;
+    font-weight: bold;
+}
+.clock-popup.calendar .day-label,
+.clock-popup.calendar .month-label,
+.clock-popup.calendar .year-label,
+.clock-popup.calendar .date-label {
+    min-width: 104px;
+    padding: 2px 12px 2px 0;
+    background-color: transparent;
+}
+.clock-popup.calendar .day-label { font-size: 12px; color: #7d7e7a; }
+.clock-popup.calendar .month-label { font-size: 14px; color: #e2e0d8; }
+.clock-popup.calendar .year-label { font-size: 11px; color: #7d7e7a; }
+.clock-popup.calendar .date-label {
+    font-size: 40px;
+    font-weight: bold;
+    color: #e2e0d8;
+    padding-top: 8px;
+}
+/* Omarchy BarIconButton: 27px slot, 13px glyph. */
+.raycast-button,
+.bluetooth-widget,
+.wifi-widget,
+.volume-widget {
+    padding: 0;
+    min-width: 27px;
+    max-width: 27px;
+}
+.raycast-button .icon,
+.bluetooth-widget .icon,
+.wifi-widget .icon,
+.volume-widget .icon { font-size: 13px; }
+
+/* Bluetooth popup: inset child surfaces so the outer frame stays visible. */
+.bluetooth-menu {
+    padding: 2px;
+    background-color: #191b1c;
+    color: #e2e0d8;
+    border: 2px solid #7d7e7a;
+    border-radius: 0;
+    min-width: 360px;
+    max-width: 420px;
+    min-height: 240px;
+    font-size: 13px;
+}
+.bluetooth-menu .header { background-color: #191b1c; border: none; padding: 12px; border-bottom: 1px solid #3b4042; }
+.bluetooth-menu .header .title { font-size: 16px; font-weight: bold; }
+.bluetooth-menu .bluetooth-list { background-color: #191b1c; border: none; }
+.bluetooth-menu .section { padding: 6px 8px; }
+.bluetooth-menu .section-title { color: #7d7e7a; font-size: 11px; padding: 6px 4px; }
+.bluetooth-menu .bluetooth-item { padding: 10px 8px; margin: 2px 0; border: none; }
+.bluetooth-menu .bluetooth-item:hover { background-color: #252829; }
+.bluetooth-menu .bluetooth-item.active { background-color: #232627; }
+.bluetooth-menu .bluetooth-item .name { font-size: 13px; color: #e2e0d8; }
+.bluetooth-menu .bluetooth-item .status { font-size: 11px; color: #9ca19e; }
+.bluetooth-menu .bluetooth-item .icon {
+    font-family: "Segoe Fluent Icons";
+    font-size: 22px;
+    min-width: 32px;
+    padding-right: 8px;
+}
+.bluetooth-menu .battery-icon,
+.bluetooth-menu .scan-icon { font-family: "Segoe Fluent Icons"; font-size: 14px; }
+.bluetooth-menu .battery { color: #9ca19e; font-size: 11px; }
+.bluetooth-menu .controls-container { padding-top: 6px; }
+.bluetooth-menu .connect,
+.bluetooth-menu .power-button,
+.bluetooth-menu .settings-button,
+.bluetooth-menu .scan-icon {
+    background-color: #232627;
+    color: #e2e0d8;
+    border: 1px solid #62676a;
+    border-radius: 0;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+.bluetooth-menu .connect:hover,
+.bluetooth-menu .power-button:hover,
+.bluetooth-menu .settings-button:hover,
+.bluetooth-menu .scan-icon:hover { background-color: #353a3c; }
+.bluetooth-menu .power-button:checked { background-color: #e2e0d8; color: #191b1c; }
+.bluetooth-menu .footer { background-color: #191b1c; border: none; padding: 10px 12px; border-top: 1px solid #3b4042; }
+.bluetooth-menu .error-message { padding: 10px; color: #e3a6a0; }
+
+.bluetooth-menu .header .title,
+.bluetooth-menu .section,
+.bluetooth-menu .section-title,
+.bluetooth-menu .details-container,
+.bluetooth-menu .controls-container,
+.bluetooth-menu .name,
+.bluetooth-menu .status,
+.bluetooth-menu .icon,
+.bluetooth-menu .battery,
+.bluetooth-menu .battery-icon {
+    border: none;
+    background-color: transparent;
+}
+.bluetooth-menu .progress-bar {
+    border: none;
+    background-color: transparent;
+    color: #7d7e7a;
+    max-height: 2px;
+}
+.bluetooth-menu QScrollBar:vertical {
+    background-color: #191b1c;
+    border: none;
+    width: 4px;
+    margin: 2px 0;
+}
+.bluetooth-menu QScrollBar::handle:vertical {
+    background-color: #62676a;
+    border: none;
+    min-height: 20px;
+}
+.bluetooth-menu QScrollBar::add-line:vertical,
+.bluetooth-menu QScrollBar::sub-line:vertical { height: 0; border: none; }
+.bluetooth-menu QScrollBar::add-page:vertical,
+.bluetooth-menu QScrollBar::sub-page:vertical { background-color: transparent; }
+
+/* Match icon hitboxes and text-label height to the 26px bar. */
+.fresh-bar .widget-container {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.raycast-button .icon,
+.bluetooth-widget .icon,
+.wifi-widget .icon,
+.volume-widget .icon,
+.clock-widget .label {
+    min-height: 26px;
+    max-height: 26px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    qproperty-alignment: AlignCenter;
+}
+.systray .unpinned-visibility-btn {
+    font-family: "Segoe Fluent Icons";
+    font-size: 10px;
+    min-height: 26px;
+    max-height: 26px;
+}
+
+
+/* Windows owns the Bluetooth outer border; Qt paints opaque content only. */
+.bluetooth-menu,
+QFrame.bluetooth-menu {
+    background-color: #191b1c;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+QFrame.bluetooth-menu {
+    min-width: 0;
+    min-height: 0;
+    max-width: 16777215;
+    max-height: 16777215;
+}
+
+/* Paint a continuous frame on the three visible layout sections. */
+.bluetooth-menu .header {
+    margin: 0;
+    background-color: #191b1c;
+    border: 2px solid #7d7e7a;
+    border-bottom: 1px solid #3b4042;
+    border-radius: 0;
+    padding: 12px;
+}
+.bluetooth-menu .bluetooth-list {
+    margin: 0;
+    background-color: #191b1c;
+    border: 2px solid #7d7e7a;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+}
+.bluetooth-menu .footer {
+    margin: 0;
+    background-color: #191b1c;
+    border: 2px solid #7d7e7a;
+    border-top: 1px solid #3b4042;
+    border-radius: 0;
+    padding: 10px 12px;
+}
+.bluetooth-menu .error-message {
+    margin: 0;
+    background-color: #191b1c;
+    border-left: 2px solid #7d7e7a;
+    border-right: 2px solid #7d7e7a;
+}
+
+
+
+/* Frame the scroll area, not the content that moves inside its viewport. */
+.bluetooth-menu .bluetooth-list {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: #191b1c;
+}
+.bluetooth-menu QScrollArea {
+    margin: 0;
+    padding: 0;
+    background-color: #191b1c;
+    border: none;
+    border-left: 2px solid #7d7e7a;
+    /* Match the outer header/footer edge. */
+    border-right: 2px solid #7d7e7a;
+}
+.bluetooth-menu QScrollArea QScrollBar:vertical {
+    background-color: #191b1c;
+    border: none;
+    width: 4px;
+    margin: 2px 0;
+}
+
+/* Keep the right edge visible in both scrollbar states. */
+.bluetooth-menu QScrollArea > QWidget {
+    background-color: #191b1c;
+    border: none;
+    border-right: 2px solid #7d7e7a;
+}
+.bluetooth-menu QScrollArea QScrollBar:vertical {
+    background-color: #191b1c;
+    border-right: 2px solid #7d7e7a;
+    width: 4px;
+}

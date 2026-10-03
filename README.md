@@ -2,7 +2,7 @@
 
 An unofficial Windows 11 setup built with [Komorebi](https://github.com/LGUG2Z/komorebi), [YASB](https://github.com/amnweb/yasb), and [AutoHotkey](https://www.autohotkey.com/).
 
-It borrows the parts of the [Omarchy](https://omarchy.org/) workflow that translate well to Windows: keyboard-driven window management, fast workspace switching, scrolling layouts, and a useful top bar. It is inspired by Omarchy, but is not an Omarchy project or a Windows port of Omarchy.
+It borrows the parts of the [Omarchy](https://omarchy.org/) workflow that translate well to Windows: keyboard-driven window management, fast workspace switching, scrolling layouts, and a useful top bar. The YASB configuration is styled after Omarchy, with original Windows-specific configuration and styling built from scratch. It is inspired by Omarchy, but is not an Omarchy project or a Windows port of Omarchy.
 
 ## What you get
 
@@ -10,8 +10,8 @@ It borrows the parts of the [Omarchy](https://omarchy.org/) workflow that transl
 - A scrolling layout with two visible columns
 - Keyboard navigation and window movement
 - Square window borders with a sky-blue active border
-- A YASB bar with workspaces, layout, taskbar, media, audio controls, system tray, and clock
-- Small, component-based CSS files instead of one large stylesheet
+- A 26px YASB top bar styled after Omarchy: a Windows glyph opening Raycast, Komorebi workspaces, centered clock/calendar, expanding system tray, Bluetooth, Wi-Fi/Ethernet, and volume
+- One original stylesheet for the bar, tooltips, calendar, and Bluetooth menu
 - Config files that can be kept in Git
 
 Komorebi manages windows and workspaces. AutoHotkey turns key presses into `komorebic` commands. YASB displays the bar and reads Komorebi's workspace state.
@@ -57,28 +57,21 @@ The source of truth is [`komorebi/hotkeys.ahk`](komorebi/hotkeys.ahk).
 ├── yasb/
 │   ├── config.yaml
 │   ├── styles.css
-│   ├── base.css
-│   ├── system-widgets.css
-│   ├── taskbar.css
-│   ├── media.css
-│   ├── clock.css
-│   ├── audio.css
-│   └── komorebi.css
-├── LICENSE
-└── LICENSES/
+│   └── DESIGN.md
+├── README.md
+└── LICENSE
 ```
 
-`yasb/styles.css` is only the stylesheet entrypoint. It imports the smaller files beside it:
+`yasb/config.yaml` defines the widgets and actions. `yasb/styles.css` contains all active styling; it imports no other theme files. [Design notes](yasb/DESIGN.md) record the Omarchy visual reference and platform differences.
 
-| File | Contains |
-| --- | --- |
-| `base.css` | Shared colors, fonts, bar, tooltips, and menus |
-| `system-widgets.css` | Home button, app shortcuts, and system tray |
-| `taskbar.css` | Running application buttons and previews |
-| `media.css` | Media label and playback menu |
-| `clock.css` | Clock and calendar |
-| `audio.css` | Volume and microphone widgets |
-| `komorebi.css` | Workspace and active-layout widgets |
+## Bar behavior
+
+- Left: Windows glyph opens the installed Raycast app; empty workspaces have dim numbers, populated workspaces brighter numbers, and the active workspace a filled square.
+- Center: full weekday and 24-hour time, such as `Saturday 20:48`. Left-click opens the local month calendar; right-click shows the full date. The calendar is a date reference, without appointment synchronization.
+- Right: a chevron expands application tray icons inline, followed by Bluetooth, Wi-Fi/Ethernet status, and volume. Tray apps depend on what is running and their pin state. Alt-click a tray icon to pin or unpin it.
+- Bluetooth opens a device menu; network opens Windows network settings; volume opens the audio menu.
+
+The menu button expects Raycast's Windows package identifier `Raycast.Raycast_qypenmj9wpt2a!Raycast`. Install Raycast separately or change the launcher callback for another application.
 
 ## Already use Komorebi, YASB, and AutoHotkey?
 
@@ -178,7 +171,7 @@ C:\Users\<user>\.config\yasb\config.yaml
 C:\Users\<user>\.config\yasb\styles.css
 ```
 
-Keep all seven CSS modules beside `styles.css`; YASB loads them through its `@import` statements.
+Only `config.yaml` and `styles.css` are needed to run this bar.
 
 ### 4. Set Komorebi's config directory
 
@@ -241,17 +234,7 @@ yasbc start
 
 The bar should appear at the top of the screen. Its workspace indicator should update when you press `Win + 1` through `Win + 4`.
 
-This theme uses fonts and icons from:
-
-- Segoe UI Variable
-- Segoe Fluent Icons
-- JetBrainsMono Nerd Font
-
-Windows 11 includes the Segoe fonts. If icons appear as empty squares, install [JetBrainsMono Nerd Font](https://www.nerdfonts.com/font-downloads), then reload YASB:
-
-```powershell
-yasbc reload
-```
+The bar uses Consolas for text and Segoe Fluent Icons for Windows glyphs. Both are included with Windows 11. Some built-in YASB defaults may use Nerd Font icons; install a Nerd Font or override those glyphs if they display as empty squares.
 
 ## Start everything at login
 
@@ -312,9 +295,9 @@ Edit `komorebi/hotkeys.ahk`, then press `Alt + O`.
 
 ### YASB
 
-Widget behavior lives in `yasb/config.yaml`. Styling starts at `yasb/styles.css`, which imports the component stylesheets.
+Widget behavior lives in `yasb/config.yaml`. All styling lives in `yasb/styles.css`.
 
-Both YASB files currently have watching enabled, but a manual reload is useful after larger changes:
+Automatic file watching is disabled. Reload after editing:
 
 ```powershell
 yasbc reload
@@ -405,7 +388,7 @@ If no process is returned, start `hotkeys.ahk` manually and test again.
 
 ### YASB does not load the theme
 
-Confirm that `config.yaml`, `styles.css`, and all seven imported CSS files are in:
+Confirm that `config.yaml` and `styles.css` are in:
 
 ```text
 C:\Users\<user>\.config\yasb
@@ -420,14 +403,10 @@ yasbc log
 
 ## Credits
 
-The window-management workflow is heavily inspired by [Omarchy](https://omarchy.org/), particularly its keyboard-driven controls and scrolling layout.
+The YASB config is styled after [Omarchy](https://github.com/omacom/omarchy), including its bar dimensions, monospace typography, workspace hierarchy, clock format, and popup appearance. The window-management workflow also takes inspiration from Omarchy's keyboard controls and scrolling layout.
 
-The YASB configuration and styling started from [Win11 Fluent Onyx](https://github.com/Hoxiee/Yasb-Fluent-Onyx-Theme) by [Hoxiee](https://github.com/Hoxiee). The theme is also published in the [YASB themes repository](https://github.com/amnweb/yasb-themes/tree/main/themes/80198c48-f70a-44a1-8507-ce300ff8e360).
-
-The original Win11 Fluent Onyx copyright and MIT license notice are retained in [`LICENSES/Win11-Fluent-Onyx-MIT.txt`](LICENSES/Win11-Fluent-Onyx-MIT.txt).
+The active YASB configuration and stylesheet were built from scratch. Omarchy's native source was used to understand visual measurements and behavior; no third-party YASB theme/config code is used.
 
 ## License
 
 Original work in this repository is available under the [MIT License](LICENSE).
-
-The YASB configuration and styling include MIT-licensed work derived from Win11 Fluent Onyx. See the retained notice above for details.
